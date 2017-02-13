@@ -56,6 +56,12 @@
     margin-bottom: 18px;
   }
 
+  p.note {
+    font-size: x-small;
+    font-style: italic;
+    color: red;
+  }
+
   .main {
     overflow: hidden;
   }

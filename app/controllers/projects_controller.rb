@@ -30,13 +30,26 @@ class ProjectsController < ApplicationController
     erb :'/projects/show.html'
   end
 
-  # GET: /projects/5/edit
   get '/projects/:id/edit' do
-    erb :'/projects/edit.html'
+    if logged_in?
+      @project = Project.find_by(id: params[:id])
+      if @project.user_id == current_user.id
+        # binding.pry
+        erb :'/projects/edit.html'
+      else
+        flash[:notice] = 'You can only edit your own projects.'
+        erb :'/projects/edit.html'
+      end
+    else
+      flash[:notice] = 'Please log in first to view projects.'
+      erb :'/users/login.html'
+    end
   end
 
   # PATCH: /projects/5
   patch '/projects/:id' do
+    binding.pry
+    @project = 
     redirect '/projects/:id'
   end
 

@@ -1,1 +1,25 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="projects">Edit <%= @project.title%></h2>
+
+    <div>
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form action="/projects/<%= @project.id %>" method="post" id="edit-form">
+        <input type="hidden" name="_method" value="patch">
+        <input type="text" name="project[title]" value="<%= @project.title %>">
+        <br><br>
+        <textarea rows="10" cols="50" name="project[description]" placeholder="<%= @project.description %>"></textarea>
+        <br><br>
+        <label for="">Due Date</label><br>
+        <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
+        <br><br>
+        <input type="submit" name="" value="Edit Project">
+      </form>
+    </div>
+  </div>
+</div>
+ 
