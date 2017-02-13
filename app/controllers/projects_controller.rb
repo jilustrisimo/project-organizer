@@ -13,7 +13,14 @@ class ProjectsController < ApplicationController
 
   # POST: /projects
   post '/projects' do
-    redirect '/projects'
+    project = Project.create(params[:project])
+    if project.save
+      project.update(user_id: current_user.id)
+      redirect "/projects/#{project.id}"
+    else
+      flash[:notice] = project.errors.full_messages.uniq.join(', ')
+      erb :'/projects/new.html'
+    end
   end
 
   # GET: /projects/5
