@@ -14,7 +14,7 @@
         <br><br>
         <textarea rows="10" cols="50" name="project[description]" placeholder="<%= @project.description %>"></textarea>
         <br><br>
-        <label for="">Due Date</label><br>
+        <small><b>Due Date</b></small><br>
         <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
         <br><br>
         <input type="submit" name="" value="Edit Project">
