@@ -1,1 +1,23 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div class="container">
+  
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="projects">Create a New Project</h2>
+
+    <div>
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form action="/projects" method="post">
+        <input type="text" name="project[title]" placeholder="Proejct Title">
+        <br><br>
+        <textarea rows="10" cols="50" name="project[description]" placeholder="project description"></textarea>
+        <br><br>
+        <label for="">Proejct Due Date</label><br>
+        <input type="date" name="project[due_date]" placeholder="due_date">
+        <br><br>
+        <input type="submit" name="" value="Create Project">
+      </form>
+    </div>
+  </div>
+</div>
