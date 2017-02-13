@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if user
       if user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        redirect to '/projects/index'
+        redirect to '/projects'
       else
         flash[:notice] = 'Invalid password'
         erb :'/users/login.html'
@@ -44,6 +44,16 @@ class UsersController < ApplicationController
     else
       flash[:notice] = 'Invalid username'
       erb :'/users/login.html'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      flash[:notice] = 'Successfully logged out.'
+      erb :'/users/login.html'
+    else
+      redirect to '/'
     end
   end
 

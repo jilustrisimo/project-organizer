@@ -98,6 +98,10 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  .wrapper footer.logout {
+    float: right;
+  }
 }
 
 @media screen and (max-width: 600px) {

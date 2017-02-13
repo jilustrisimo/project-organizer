@@ -6,8 +6,7 @@
     <div>
       <%= @project.description %>
       <br><br>
-      <label><b>Due Date</b></label>
-      <br><br>
+      <small><b>Due Date</b></small><br>
       <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
       <br><br>
       <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
