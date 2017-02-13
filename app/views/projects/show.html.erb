@@ -1,1 +1,16 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="projects"><%= @project.title %></h2>
+
+    <div>
+      <%= @project.description %>
+      <br><br>
+      <label><b>Due Date</b></label>
+      <br><br>
+      <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
+      <br><br>
+      <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
+    </div>
+  </div>
+</div> 
