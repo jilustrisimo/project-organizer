@@ -1,0 +1,22 @@
+<div class="container">
+  <!--<header><img src="images/corneal-small.png" class="img-responsive main-image"></header>-->
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="create-account">Log In</h2>
+
+    <div class="users">
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form class="users" action="/login" method="post">
+        <input type="text" name="user[username]" placeholder="username"><br><br>
+        <input type="password" name="user[password]" placeholder="password"><br><br>
+        <input type="submit" name="" value="Log In">
+      </form>
+
+      <br>
+      <a id="user-links" href="/signup">Create Account</a>
+    </div>
+
+  </div>
+</div>

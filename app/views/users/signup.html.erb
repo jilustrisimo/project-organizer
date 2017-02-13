@@ -3,13 +3,20 @@
   <div class="col-md-8 col-md-offset-2">
     <h2 class="create-account">Create Account</h2>
 
-    <div class="signup">
-      <form class="signup" action="/signup" method="post">
-        <input type="text" name="user[username]" placeholder="username"><br><br>
-        <input type="password" name="user[password]" placeholder="password"><br>
-        <p id="pwd">Passwords must be at least 8 characters long</p>
+    <div class="users">
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form class="users" action="/signup" method="post">
+        <input type="text" name="user[username]" placeholder="create username"><br><br>
+        <input type="password" name="user[password]" placeholder="create password"><br>
+        <p id="pwd">minimum 8 characters</p>
         <input type="submit" name="" value="Sign Up">
       </form>
+
+      <br>
+      <a id="user-links" href="/login">Already have an account?</a>
     </div>
 
   </div>

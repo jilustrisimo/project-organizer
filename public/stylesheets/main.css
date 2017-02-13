@@ -30,8 +30,9 @@
     width: 85%;
   }
 
-  .flash {
-    color: red
+  p.flash {
+    color: red;
+    font-size: smaller;
   }
 
   h1 {
@@ -64,8 +65,12 @@
     width: 60%; /* 480px / 800px */
   }
 
-  .signup {
+  .users {
     text-align: center;
+  }
+
+  #user-links {
+    font-size: x-small;
   }
 
   .create-account {
@@ -73,7 +78,7 @@
   }
 
   #pwd {
-    font-size: 2pts;
+    font-size: small;
     font-style: italic;
   }
   .sidebar {
