@@ -1,17 +1,19 @@
 class ProjectsController < ApplicationController
 
-  # GET: /projects
   get '/projects' do
     erb :'/projects/index.html'
   end
 
-  # GET: /projects/new
   get '/projects/new' do
-    @user = User.find_by(id: session[:user_id])
-    erb :'/projects/new.html'
+    if logged_in?
+      @user = User.find_by(id: session[:user_id])
+      erb :'/projects/new.html'
+    else
+      flash[:notice] = 'Please log in first to create a project.'
+      erb :'/users/login.html'
+    end
   end
 
-  # POST: /projects
   post '/projects' do
     project = Project.create(params[:project])
     if project.save
@@ -23,8 +25,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET: /projects/5
   get '/projects/:id' do
+    @project = Project.find(params[:id])
     erb :'/projects/show.html'
   end
 

@@ -5,20 +5,28 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    params[:user][:username].downcase!
-    #=> set to make username input case insensitive
-    user = User.create(params[:user])
-    if user.save
-      session[:user_id] = user.id
-      redirect '/projects/new'
+    if !logged_in?
+      params[:user][:username].downcase!
+      #=> set to make username input case insensitive
+      user = User.create(params[:user])
+      if user.save
+        session[:user_id] = user.id
+        redirect '/projects/new'
+      else
+        flash[:notice] = user.errors.full_messages.uniq.join(', ')
+        erb :'/users/signup.html'
+      end
     else
-      flash[:notice] = user.errors.full_messages.uniq.join(', ')
-      erb :'/users/signup.html'
+      redirect '/projects'
     end
   end
 
   get '/login' do
-    erb :'/users/login.html'
+    if logged_in?
+      redirect '/projects'
+    else
+      erb :'/users/login.html'
+    end
   end
 
   post '/login' do
