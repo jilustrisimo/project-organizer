@@ -24,5 +24,12 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find_by(id: session[:user_id])
     end
+
+    def check_if_logged_in
+      unless logged_in?
+        flash[:notice] = flash[:notice] = 'Please log in first.'
+        redirect to '/login'
+      end
+    end
   end
 end

@@ -32,18 +32,20 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/:id' do
-    if logged_in?
+    # if logged_in?
+    check_if_logged_in
       @project = Project.find_by(id: params[:id])
       if @project.user_id == current_user.id
+        session[:project_id] = @project.id
         erb :'/projects/show.html'
       else
         flash[:notice] = 'You can only view you own projects.'
         redirect to '/projects'
       end
-    else
-      flash[:notice] = 'Please log in first to view projects.'
-      redirect to '/login'
-    end
+    # else
+    #   flash[:notice] = 'Please log in first to view projects.'
+    #   redirect to '/login'
+    # end
   end
 
   get '/projects/:id/edit' do
