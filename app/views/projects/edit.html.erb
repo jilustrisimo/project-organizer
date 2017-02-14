@@ -12,12 +12,13 @@
         <input type="hidden" name="_method" value="patch">
         <input type="text" name="project[title]" value="<%= @project.title %>">
         <br><br>
-        <textarea rows="10" cols="50" name="project[description]" placeholder="<%= @project.description %>"></textarea>
+        <textarea rows="10" cols="50" name="project[description]"><%= @project.description %></textarea>
         <br><br>
         <small><b>Due Date</b></small><br>
         <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
         <br><br>
         <input type="submit" name="" value="Edit Project">
+
       </form>
     </div>
   </div>

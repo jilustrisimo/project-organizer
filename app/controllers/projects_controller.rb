@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/:id' do
-    @project = Project.find(params[:id])
+    @project = Project.find_by_id(params[:id])
     erb :'/projects/show.html'
   end
 
@@ -46,11 +46,16 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH: /projects/5
   patch '/projects/:id' do
-    binding.pry
-    @project = 
-    redirect '/projects/:id'
+    @project = Project.find_by_id(params[:id])
+    @project.update(params[:project])
+    if @project.save
+      redirect "/projects/#{@project.id}"
+    else
+      flash[:notice] = @project.errors.full_messages.uniq.join(', ')
+      @project = Project.find_by_id(params[:id])
+      erb :'/projects/edit.html'
+    end
   end
 
   # DELETE: /projects/5/delete
