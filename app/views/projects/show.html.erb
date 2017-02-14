@@ -1,14 +1,14 @@
 <div class="container">
   
   <div class="col-md-8 col-md-offset-2">
-    <h2 class="projects"><%= @project.title %></h2>
+    <h2 class="center"><%= @project.title %></h2>
 
       <% if flash.has?(:notice) %>
         <p class="flash"><b><%= flash[:notice] %></b></p>
       <% end %>
 
     <div>
-      <%= @project.description %>
+      <p class="center"><%= @project.description %></p>
       <br><br>
       <small><b>Due Date</b></small><br>
       <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>

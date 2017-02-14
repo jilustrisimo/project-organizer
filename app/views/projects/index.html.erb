@@ -1,7 +1,7 @@
 <div class="container">
   
   <div class="col-md-8 col-md-offset-2">
-    <h2 class="projects">All of your projects</h2>
+    <h2 class="center">All Projects</h2>
 
       <% if flash.has?(:notice) %>
         <p class="flash"><b><%= flash[:notice] %></b></p>
@@ -11,9 +11,9 @@
       <% @projects.each do |project| %>
       <a href="/projects/<%= project.id %>" class="projects">
         <div class="sorted-projects">
-          <h3><b><%= project.title %></b></h3>
+          <h3 class="center"><b><%= project.title %></b></h3>
           <br><br>
-          <p><%= project.description %></p>
+          <p class="center" ><%= project.description %></p>
         <small><b>Due Date</b></small><br>
         <%= project.due_date.to_time.strftime('%A %e %B %Y') %>
         <br><br>

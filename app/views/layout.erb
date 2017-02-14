@@ -21,8 +21,12 @@
     <footer class="branding">
       <small>&copy; 2017 <strong>Project Organizer</strong></small>
     </footer>
-    <footer class="logout">
-      <small><strong><a href="/logout">Log Out</a></strong></small>
+    <footer class="user-links">
+      <% if logged_in? %>
+        <small><b><a href="/projects/new">Create Project</a></b></small>
+        <small><b><a href="/projects">View Projects</a></b></small>
+      <% end %>
+      <a href="/logout"><button id="logout"><strong>Log Out</strong></button></a>
     </footer>
   </div>
 
