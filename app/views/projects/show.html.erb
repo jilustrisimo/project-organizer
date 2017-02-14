@@ -3,6 +3,10 @@
   <div class="col-md-8 col-md-offset-2">
     <h2 class="projects"><%= @project.title %></h2>
 
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
     <div>
       <%= @project.description %>
       <br><br>

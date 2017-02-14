@@ -30,11 +30,6 @@
     width: 85%;
   }
 
-  p.flash {
-    color: red;
-    font-size: smaller;
-  }
-
   h1 {
     font-size: 36px;
     line-height: 54px;
@@ -140,3 +135,13 @@
     line-height: 24px;
   }
 }
+
+@keyframes blinker {  
+  50% { opacity: .25; }
+}
+
+  p.flash {
+    color: red;
+    font-size: smaller;
+    animation: blinker 1s linear 4;
+  }

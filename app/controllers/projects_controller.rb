@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
       erb :'/projects/new.html'
     else
       flash[:notice] = 'Please log in first to create a project.'
-      erb :'/users/login.html'
+      reidirect 'login'
     end
   end
 
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
       redirect "/projects/#{project.id}"
     else
       flash[:notice] = project.errors.full_messages.uniq.join(', ')
-      erb :'/projects/new.html'
+      redirect '/projects/new'
     end
   end
 
@@ -34,15 +34,14 @@ class ProjectsController < ApplicationController
     if logged_in?
       @project = Project.find_by(id: params[:id])
       if @project.user_id == current_user.id
-        # binding.pry
-        erb :'/projects/edit.html'
+        redirect to "/projects/#{@project.id}"
       else
         flash[:notice] = 'You can only edit your own projects.'
-        erb :'/projects/edit.html'
+        redirect to "/projects/#{@project.id}"
       end
     else
       flash[:notice] = 'Please log in first to view projects.'
-      erb :'/users/login.html'
+      redirect to '/login'
     end
   end
 
@@ -50,11 +49,11 @@ class ProjectsController < ApplicationController
     @project = Project.find_by_id(params[:id])
     @project.update(params[:project])
     if @project.save
-      redirect "/projects/#{@project.id}"
+      redirect to "/projects/#{@project.id}"
     else
       flash[:notice] = @project.errors.full_messages.uniq.join(', ')
       @project = Project.find_by_id(params[:id])
-      erb :'/projects/edit.html'
+      redirect to "/projects/#{@project.id}/edit"
     end
   end
 

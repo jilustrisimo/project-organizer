@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         redirect '/projects/new'
       else
         flash[:notice] = user.errors.full_messages.uniq.join(', ')
-        erb :'/users/signup.html'
+        redirect to '/signup'
       end
     else
       redirect '/projects'
@@ -39,11 +39,11 @@ class UsersController < ApplicationController
         redirect to '/projects'
       else
         flash[:notice] = 'Invalid password'
-        erb :'/users/login.html'
+        redirect to '/login'
       end
     else
       flash[:notice] = 'Invalid username'
-      erb :'/users/login.html'
+      redirect to '/login'
     end
   end
 
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if logged_in?
       session.clear
       flash[:notice] = 'Successfully logged out.'
-      erb :'/users/login.html'
+      redirect to '/login'
     else
       redirect to '/'
     end
@@ -59,6 +59,6 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete '/users/:id/delete' do
-    redirect '/users'
+    redirect to '/users'
   end
 end
