@@ -1,23 +1,25 @@
 class ProjectsController < ApplicationController
 
   get '/projects' do
-    if logged_in?
-      @projects = current_user.projects.order(:due_date)
-      erb :'/projects/index.html'
-    else
-      flash[:notice] = 'Please log in first to view projects.'
-      redirect to '/login'
-    end
+    # if logged_in?
+    check_if_logged_in
+    @projects = current_user.projects.order(:due_date)
+    erb :'/projects/index.html'
+    # else
+    #   flash[:notice] = 'Please log in first to view projects.'
+    #   redirect to '/login'
+    # end
   end
 
   get '/projects/new' do
-    if logged_in?
-      @user = User.find_by(id: session[:user_id])
-      erb :'/projects/new.html'
-    else
-      flash[:notice] = 'Please log in first to create a project.'
-      redirect to '/login'
-    end
+    # if logged_in?
+    check_if_logged_in
+    @user = User.find_by(id: session[:user_id])
+    erb :'/projects/new.html'
+    # else
+    #   flash[:notice] = 'Please log in first to create a project.'
+    #   redirect to '/login'
+    # end
   end
 
   post '/projects' do
@@ -32,35 +34,32 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/:id' do
+    check_if_logged_in
+    @project = Project.find_by(id: params[:id])
+    if @project.user_id == current_user.id
+      # set for creating tasks
+      session[:project_id] = @project.id
+      erb :'/projects/show.html'
+    else
+      flash[:notice] = 'You can only view you own projects.'
+      redirect to '/projects'
+    end
+  end
+
+  get '/projects/:id/edit' do
     # if logged_in?
     check_if_logged_in
-      @project = Project.find_by(id: params[:id])
-      if @project.user_id == current_user.id
-        session[:project_id] = @project.id
-        erb :'/projects/show.html'
-      else
-        flash[:notice] = 'You can only view you own projects.'
-        redirect to '/projects'
-      end
+    @project = Project.find_by(id: params[:id])
+    if @project.user_id == current_user.id
+      erb :'/projects/edit.html'
+    else
+      flash[:notice] = 'You can only edit your own projects.'
+      redirect to '/projects'
+    end
     # else
     #   flash[:notice] = 'Please log in first to view projects.'
     #   redirect to '/login'
     # end
-  end
-
-  get '/projects/:id/edit' do
-    if logged_in?
-      @project = Project.find_by(id: params[:id])
-      if @project.user_id == current_user.id
-        erb :'/projects/edit.html'
-      else
-        flash[:notice] = 'You can only edit your own projects.'
-        redirect to '/projects'
-      end
-    else
-      flash[:notice] = 'Please log in first to view projects.'
-      redirect to '/login'
-    end
   end
 
   patch '/projects/:id' do
@@ -76,21 +75,22 @@ class ProjectsController < ApplicationController
   end
 
   delete '/projects/:id/delete' do
-    if logged_in?
-      @project = current_user.projects.find_by(id: params[:id])
+    # if logged_in?
+    check_if_logged_in
+    @project = current_user.projects.find_by(id: params[:id])
 
-      if @project
-        @project.delete
-        redirect '/projects'
-      else
-        flash[:notice] = 'You can only delete your own projects.'
-        redirect to '/projects'
-      end
-
+    if @project
+      @project.delete
+      redirect '/projects'
     else
-      flash[:notice] = 'Please log in first.'
+      flash[:notice] = 'You can only delete your own projects.'
       redirect to '/projects'
     end
+
+    # else
+    #   flash[:notice] = 'Please log in first.'
+    #   redirect to '/projects'
+    # end
 
   end
 end

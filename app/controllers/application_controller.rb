@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 
     def check_if_logged_in
       unless logged_in?
-        flash[:notice] = flash[:notice] = 'Please log in first.'
+        flash[:notice] = 'Please log in first.'
         redirect to '/login'
       end
     end

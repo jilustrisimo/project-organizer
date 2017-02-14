@@ -48,14 +48,15 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in?
-      session.clear
-      flash[:notice] = 'Successfully logged out.'
-      # rendering view since session is cleared
-      erb :'/users/login.html'
-    else
-      redirect to '/'
-    end
+    # if logged_in?
+    check_if_logged_in
+    session.clear
+    flash[:notice] = 'Successfully logged out.'
+    # rendering view since session is cleared
+    erb :'/users/login.html'
+    # else
+    #   redirect to '/'
+    # end
   end
 
   # DELETE: /users/5/delete
