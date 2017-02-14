@@ -5,6 +5,8 @@ class ProjectsController < ApplicationController
       @projects = current_user.projects.order(:due_date)
       erb :'/projects/index.html'
     else
+      flash[:notice] = 'Please log in first to view projects.'
+      redirect to '/login'
     end
   end
 
@@ -14,7 +16,7 @@ class ProjectsController < ApplicationController
       erb :'/projects/new.html'
     else
       flash[:notice] = 'Please log in first to create a project.'
-      reidirect 'login'
+      redirect to '/login'
     end
   end
 
