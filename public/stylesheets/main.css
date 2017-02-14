@@ -118,6 +118,13 @@
     text-align: center;
   }
 
+  input.delete {
+    background-color: red;
+    padding: 5px;
+    color: white;
+    
+  }
+
   button#logout {
     padding: 5px;
   }

@@ -63,6 +63,7 @@ class ProjectsController < ApplicationController
 
   # DELETE: /projects/5/delete
   delete '/projects/:id/delete' do
+    raise session.inspect
     redirect '/projects'
   end
 end
