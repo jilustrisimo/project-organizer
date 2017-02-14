@@ -48,6 +48,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
+    raise session.inspect
     if logged_in?
       session.clear
       flash[:notice] = 'Successfully logged out.'

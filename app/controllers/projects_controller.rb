@@ -30,8 +30,18 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/:id' do
-    @project = Project.find_by_id(params[:id])
-    erb :'/projects/show.html'
+    if logged_in?
+      @project = Project.find_by(id: params[:id])
+      if @project.user_id == current_user.id
+        erb :'/projects/show.html'
+      else
+        flash[:notice] = "You can only view you own projects."
+        redirect to '/projects'
+      end
+    else
+      flash[:notice] = 'Please log in first to view projects.'
+      redirect to '/login'
+    end
   end
 
   get '/projects/:id/edit' do
@@ -61,9 +71,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE: /projects/5/delete
   delete '/projects/:id/delete' do
-    raise session.inspect
-    redirect '/projects'
+    if logged_in?
+      @project = current_user.projects.find_by(id: params[:id])
+
+      if @project
+        @project.delete
+        redirect '/projects'
+      else
+        flash[:notice] = 'You can only delete your own projects.'
+        redirect to '/projects'
+      end
+
+    else
+      flash[:notice] = 'Please log in first.'
+      redirect to '/projects'
+    end
+
   end
 end
