@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
 
   get '/projects' do
-    erb :'/projects/index.html'
+    if logged_in?
+      @projects = current_user.projects.order(:due_date)
+      erb :'/projects/index.html'
+    else
+    end
   end
 
   get '/projects/new' do

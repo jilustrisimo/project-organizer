@@ -47,6 +47,12 @@
     line-height: 36px;
   }
 
+  div.sorted-projects {
+    border: 7px ridge silver;
+    margin: 10px;
+    padding: 20px;
+  }
+
   p {
     margin-bottom: 18px;
   }
@@ -102,6 +108,11 @@
 
   .wrapper footer.logout {
     float: right;
+  }
+
+  a.projects {
+    color: black;
+    text-decoration: none;
   }
 }
 
