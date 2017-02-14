@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
       if @project.user_id == current_user.id
         erb :'/projects/show.html'
       else
-        flash[:notice] = "You can only view you own projects."
+        flash[:notice] = 'You can only view you own projects.'
         redirect to '/projects'
       end
     else
@@ -50,10 +50,10 @@ class ProjectsController < ApplicationController
     if logged_in?
       @project = Project.find_by(id: params[:id])
       if @project.user_id == current_user.id
-        redirect to "/projects/#{@project.id}"
+        erb :'/projects/edit.html'
       else
         flash[:notice] = 'You can only edit your own projects.'
-        redirect to "/projects/#{@project.id}"
+        redirect to '/projects'
       end
     else
       flash[:notice] = 'Please log in first to view projects.'

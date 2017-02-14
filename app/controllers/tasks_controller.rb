@@ -7,6 +7,7 @@ class TasksController < ApplicationController
 
   # GET: /tasks/new
   get "/tasks/new" do
+    binding.pry
     erb :"/tasks/new.html"
   end
 

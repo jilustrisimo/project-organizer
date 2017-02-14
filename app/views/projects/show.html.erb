@@ -13,8 +13,9 @@
       <small><b>Due Date</b></small><br>
       <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
       <br><br>
-      <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
+      <button type="submit" id="edit-object"><a href="/tasks/new" id="edit-object">Create Project Task</a></button>
       <br><br>
+      <button type="submit" id="edit-object"><a href="/projects/<%= @project.id %>/edit" id="edit-object">Edit Project</a></button>
       <form onsubmit="return confirm('Are you sure you want to delete <%= @project.title %>?');" action="/projects/<%= @project.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" name="delete" value="Delete Project" id="Delete Project" class="delete">

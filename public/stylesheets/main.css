@@ -122,11 +122,17 @@
     background-color: red;
     padding: 5px;
     color: white;
-    
+    float: right;
+    margin-bottom: 5px;
   }
 
   button#logout {
     padding: 5px;
+  }
+
+  #edit-object {
+    padding: 7px;
+    text-decoration: none;
   }
 }
 
