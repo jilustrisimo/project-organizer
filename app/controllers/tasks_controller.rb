@@ -1,10 +1,5 @@
 class TasksController < ApplicationController
 
-  # GET: /tasks
-  get "/tasks" do
-    erb :"/tasks/index.html"
-  end
-
   get "/tasks/new" do
     check_if_logged_in
     @project = Project.find_by(id: session[:project_id])
@@ -49,12 +44,8 @@ class TasksController < ApplicationController
 
   delete '/tasks/:id/delete' do
     task = Task.find_by(id: session[:task_id])
-    if task
-      task.delete
-      session.delete(:task_id)
-    else
-      flash[:notice] = 'You can only delete your own tasks.'
-    end
+    task.delete
+    session.delete(:task_id)
     redirect to "/projects/#{session[:project_id]}"
   end
 end
