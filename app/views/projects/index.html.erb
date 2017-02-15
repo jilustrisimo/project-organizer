@@ -15,7 +15,11 @@
           <br><br>
           <p class="center" ><%= project.description %></p>
         <small><b>Due Date</b></small><br>
-        <%= project.due_date.to_time.strftime('%A %e %B %Y') %>
+        <% if Date.parse(project.due_date.to_s) <=  Date.today %>
+          <p class="date"><%= project.due_date.strftime('%A %e %B %Y') %></p>
+        <% else %>
+          <p><%= project.due_date.strftime('%A %e %B %Y') %></p>
+        <% end %>
         <br><br>
         </div>
       </a>

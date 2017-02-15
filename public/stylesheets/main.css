@@ -186,3 +186,10 @@
     font-size: smaller;
     animation: blinker 1s linear 4;
   }
+
+  div p.date {
+    color: red;
+    font-size: large;
+    animation: blinker 1s linear infinite;
+
+  }
