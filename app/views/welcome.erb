@@ -1,21 +1,16 @@
 <div class="container">
-  <header><img src="images/corneal-small.png" class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
     <h2>Welcome to Project Organizer</h2>
 
     <div class="content">
-      <p>Welcome to the Sinatra Template! If you're seeing this page, then everything is working
-      as expected. To get started, delete this file (<code>app/views/welcome.erb)</code> and begin adding
-      your own actions to <code>application_controller.rb</code>. For more information, see the <a href="https://github.com/thebrianemory/corneal">README</a>.</p>
+      <p>Welcome to Project Organizer!  This site helps you organize your projects.  You can also create tasks for each project which will then show up under each project's page. For more information, see the <a href="https://github.com/jilustrisimo/project-organizer">README</a>.</p>
     </div>
 
     <div class="sidebar">
-      <h3>Environment</h3>
       <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
+        <li><b><a href="/login" class="clickable-cells">Log in to view your projects</a></b></li>
+        <br>
+        <li><b><a href="/signup" class="clickable-cells">Sign up for a new account</a></b></li>
       </ul>
     </div>
 
