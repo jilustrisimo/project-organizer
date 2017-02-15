@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="users">Settings</h2>
+
+    <div class="users">
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form class="users" action="/update" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <label for="">Change Username</label><br>
+        <input type="text" name="user[username]" value="<%= @user.username %>"><br><br>
+        <input type="submit" name="" value="Update Username">
+      </form>
+
+      <br>
+      <a id="user-links" href="/signup">Create Account</a>
+    </div>
+
+  </div>
+</div>

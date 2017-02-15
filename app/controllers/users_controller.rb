@@ -59,6 +59,24 @@ class UsersController < ApplicationController
     # end
   end
 
+  get '/update' do
+    check_if_logged_in
+    @user = current_user
+    erb :'/users/settings.html'
+  end
+
+  patch '/update' do
+    @user = current_user
+    @user.username = (params[:user][:username])
+    if @user.save
+      redirect to '/projects'
+    else
+
+      flash[:notice] = @user.errors.full_messages.first
+      redirect to '/update'
+    end
+  end
+
   # DELETE: /users/5/delete
   delete '/users/:id/delete' do
     redirect to '/users'
