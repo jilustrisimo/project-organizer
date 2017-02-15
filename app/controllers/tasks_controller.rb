@@ -1,22 +1,16 @@
 class TasksController < ApplicationController
 
-  # GET: /tasks
-  get "/tasks" do
-    erb :"/tasks/index.html"
-  end
-
-  get "/tasks/new" do
+  get '/tasks/new' do
     check_if_logged_in
     @project = Project.find_by(id: session[:project_id])
-    erb :"/tasks/new.html"
+    erb :'/tasks/new.html'
   end
 
-  post "/tasks" do
-    project = Project.find_by(id: session[:project_id])
+  post '/tasks' do
     task = Task.create(params[:task])
     if task.save
       task.update(project_id: session[:project_id])
-      redirect "/projects/#{project.id}"
+      redirect "/projects/#{task.project_id}"
     else
       flash[:notice] = task.errors.full_messages.uniq.join(', ')
       redirect to '/tasks/new'
@@ -49,12 +43,8 @@ class TasksController < ApplicationController
 
   delete '/tasks/:id/delete' do
     task = Task.find_by(id: session[:task_id])
-    if task
-      task.delete
-      session.delete(:task_id)
-    else
-      flash[:notice] = 'You can only delete your own tasks.'
-    end
+    task.delete
+    session.delete(:task_id)
     redirect to "/projects/#{session[:project_id]}"
   end
 end

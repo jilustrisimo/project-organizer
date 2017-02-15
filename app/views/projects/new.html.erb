@@ -14,7 +14,7 @@
         <textarea rows="10" cols="50" name="project[description]" placeholder="project description"></textarea>
         <br><br>
         <label for="">Proejct Due Date</label><br>
-        <input type="date" name="project[due_date]"><br>
+        <input type="date" name="project[due_date]" min="<%= Date.tomorrow.strftime('%Y-%m-%d') %>" ><br>
         <p class="note">*Please note, we do not allow editing of your project due date.<br>This is to give incentive towards keeping to your deadlines. &#128519;</p>
         <br>
         <input type="submit" name="" value="Create Project">

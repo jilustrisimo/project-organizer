@@ -6,33 +6,26 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !logged_in?
-      params[:user][:username].downcase!
-      #=> set to make username input case insensitive
-      user = User.create(params[:user])
-      if user.save
-        session[:user_id] = user.id
-        redirect '/projects/new'
-      else
-        flash[:notice] = user.errors.full_messages.uniq.join(', ')
-        redirect to '/signup'
-      end
+    params[:user][:username].downcase!
+    #=> set to make username input case insensitive
+    user = User.create(params[:user])
+    if user.save
+      session[:user_id] = user.id
+      redirect '/projects/new'
     else
-      redirect '/projects'
+      flash[:notice] = user.errors.full_messages.uniq.join(', ')
+      redirect to '/signup'
     end
   end
 
   get '/login' do
-    if logged_in?
-      redirect '/projects'
-    else
-      erb :'/users/login.html'
-    end
+    erb :'/users/login.html' unless logged_in?
+    redirect '/projects'
   end
 
   post '/login' do
+    # set to make username input case insensitive
     params[:user][:username].downcase!
-    #=> set to make username input case insensitive
     user = User.find_by(username: params[:user][:username])
     if user
       if user.authenticate(params[:user][:password])
@@ -62,21 +55,21 @@ class UsersController < ApplicationController
   end
 
   patch '/update' do
-    @user = current_user
-    @user.username = (params[:user][:username])
-    if @user.save
+    user = current_user
+    user.username = (params[:user][:username])
+    if user.save
       redirect to '/projects'
     else
-      flash[:notice] = @user.errors.full_messages.first
+      flash[:notice] = user.errors.full_messages.first
       redirect to '/update'
     end
   end
 
   delete '/users/:id/delete' do
-    @user = current_user
-    @user.delete_everything
+    user = current_user
+    user.delete_everything
     session.clear
-    @user.delete
+    user.delete
     redirect to '/'
   end
 end
