@@ -76,8 +76,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE: /users/5/delete
   delete '/users/:id/delete' do
-    redirect to '/users'
+    @user = current_user
+    @user.delete_everything
+    session.clear
+    @user.delete
+    redirect to '/'
   end
 end

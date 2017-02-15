@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 8 }
 
   def delete_everything
-    projects.tasks.delete_all
+    projects.each { |project| project.tasks.delete_all }
     projects.delete_all
   end
 end
