@@ -124,10 +124,12 @@
     color: white;
     float: right;
     margin-bottom: 5px;
+    cursor: pointer;
   }
 
-  button#logout {
+  #layout-links {
     padding: 5px;
+    cursor: pointer;
   }
 
   #edit-object {
