@@ -69,7 +69,6 @@ class ProjectsController < ApplicationController
       redirect to "/projects/#{@project.id}"
     else
       flash[:notice] = @project.errors.full_messages.uniq.join(', ')
-      @project = Project.find_by_id(params[:id])
       redirect to "/projects/#{@project.id}/edit"
     end
   end

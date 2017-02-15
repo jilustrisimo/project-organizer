@@ -41,7 +41,14 @@ class TasksController < ApplicationController
 
   # PATCH: /tasks/5
   patch "/tasks/:id" do
-    redirect "/tasks/:id"
+    @task = Task.find_by_id(params[:id])
+    @task.update(params[:task])
+    if @task.save
+      redirect to "/tasks/#{@task.id}"
+    else
+      flash[:notice] = @task.errors.full_messages.uniq.join(', ')
+      redirect to "/tasks/#{@task.id}/edit"
+    end
   end
 
   # DELETE: /tasks/5/delete
