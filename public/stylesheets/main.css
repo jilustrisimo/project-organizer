@@ -136,7 +136,7 @@
   }
 
   .tasks {
-    display: inline-block;
+    display: list-item;
     text-align: center;
     border: 5px groove silver;
     padding: 10px;

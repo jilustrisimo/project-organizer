@@ -28,9 +28,15 @@ class TasksController < ApplicationController
     erb :"/tasks/show.html"
   end
 
-  # GET: /tasks/5/edit
-  get "/tasks/:id/edit" do
-    erb :"/tasks/edit.html"
+  get '/tasks/:id/edit' do
+    check_if_logged_in
+    @task = Task.find_by(id: params[:id])
+    if @task.project_id == session[:project_id]
+      erb :'/taks/edit.html'
+    else
+      flash[:notice] = 'You can only edit your own tasks.'
+      redirect to '/tasks'
+    end
   end
 
   # PATCH: /tasks/5
