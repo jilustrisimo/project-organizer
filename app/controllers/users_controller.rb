@@ -71,7 +71,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect to '/projects'
     else
-
       flash[:notice] = @user.errors.full_messages.first
       redirect to '/update'
     end

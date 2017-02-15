@@ -15,8 +15,11 @@
         <input type="submit" name="" value="Update Username">
       </form>
 
-      <br>
-      <a id="user-links" href="/signup">Create Account</a>
+      <form onsubmit="return confirm('DANGEROUS: Are you sure you want to delete you account? This action is irreversible and ALL of your projects and tasks will be lost.');" action="/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="delete" value="Delete Account" class="delete">
+      </form>
+
     </div>
 
   </div>
