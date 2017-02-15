@@ -10,6 +10,15 @@
     <div>
       <p class="center"><%= @project.description %></p>
       <br><br>
+        <% @project.tasks.each do |task| %>
+          <a href="/tasks/<%= task.id %>/edit" class="clickable-cells">
+            <div class="tasks">
+              <p><b><%= task.title %></b></p>
+              <p><%= task.content %></p>
+            </div>
+          </a>
+        <% end %>
+        <br>
       <small><b>Due Date</b></small><br>
       <%= @project.due_date.to_time.strftime('%A %e %B %Y') %>
       <br><br>

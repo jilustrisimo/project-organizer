@@ -5,14 +5,22 @@ class TasksController < ApplicationController
     erb :"/tasks/index.html"
   end
 
-  # GET: /tasks/new
   get "/tasks/new" do
+    check_if_logged_in
+    @project = Project.find_by(id: session[:project_id])
     erb :"/tasks/new.html"
   end
 
-  # POST: /tasks
   post "/tasks" do
-    redirect "/tasks"
+    project = Project.find_by(id: session[:project_id])
+    task = Task.create(params[:task])
+    if task.save
+      task.update(project_id: session[:project_id])
+      redirect "/projects/#{project.id}"
+    else
+      flash[:notice] = task.errors.full_messages.uniq.join(', ')
+      redirect to '/tasks/new'
+    end
   end
 
   # GET: /tasks/5

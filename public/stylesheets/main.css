@@ -109,7 +109,7 @@
     float: right;
   }
 
-  a.projects {
+  a.clickable-cells {
     color: black;
     text-decoration: none;
   }
@@ -133,6 +133,14 @@
   #edit-object {
     padding: 7px;
     text-decoration: none;
+  }
+
+  .tasks {
+    display: inline-block;
+    text-align: center;
+    border: 5px groove silver;
+    padding: 10px;
+    margin: 10px;
   }
 }
 

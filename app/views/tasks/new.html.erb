@@ -1,1 +1,20 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div class="container">
+  
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="projects">New Task for <%= @project.title %></h2>
+
+    <div>
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form action="/tasks" method="post">
+        <input type="text" name="task[title]" placeholder="Task Title">
+        <br><br>
+        <textarea rows="10" cols="30" name="task[content]" placeholder="task objective"></textarea>
+        <br><br>
+        <input type="submit" name="" value="Create Task">
+      </form>
+    </div>
+  </div>
+</div>

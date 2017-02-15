@@ -12,10 +12,10 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/new' do
-    # if logged_in?
     check_if_logged_in
-    @user = User.find_by(id: session[:user_id])
     erb :'/projects/new.html'
+    # if logged_in?
+    # @user = User.find_by(id: session[:user_id])
     # else
     #   flash[:notice] = 'Please log in first to create a project.'
     #   redirect to '/login'
