@@ -135,6 +135,7 @@
   #edit-object {
     padding: 7px;
     text-decoration: none;
+    color: black;
   }
 
   .tasks {
@@ -190,6 +191,5 @@
   div p.date {
     color: red;
     font-size: large;
-    animation: blinker 1s linear infinite;
-
+    animation: blinker 2s linear infinite;
   }

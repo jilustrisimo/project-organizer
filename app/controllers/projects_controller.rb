@@ -49,13 +49,13 @@ class ProjectsController < ApplicationController
   end
 
   patch '/projects/:id' do
-    @project = Project.find_by_id(params[:id])
-    @project.update(params[:project])
-    if @project.save
-      redirect to "/projects/#{@project.id}"
+    project = Project.find_by_id(params[:id])
+    project.update(params[:project])
+    if project.save
+      redirect to "/projects/#{project.id}"
     else
-      flash[:notice] = @project.errors.full_messages.uniq.join(', ')
-      redirect to "/projects/#{@project.id}/edit"
+      flash[:notice] = project.errors.full_messages.uniq.join(', ')
+      redirect to "/projects/#{project.id}/edit"
     end
   end
 
