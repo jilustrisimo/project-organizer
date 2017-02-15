@@ -36,7 +36,7 @@ class TasksController < ApplicationController
       erb :'/tasks/edit.html'
     else
       flash[:notice] = 'You can only edit your own tasks.'
-      redirect to '/tasks'
+      redirect to '/projects'
     end
   end
 
