@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'/users/signup.html' unless logged_in?
-    redirect to '/projects'
+    logged_in? ? (redirect to '/projects') : (erb :'/users/signup.html')
   end
 
   post '/signup' do
@@ -19,8 +18,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :'/users/login.html' unless logged_in?
-    redirect '/projects'
+    logged_in? ? (redirect to '/projects') : (erb :'/users/login.html')
   end
 
   post '/login' do
