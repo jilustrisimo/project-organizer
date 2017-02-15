@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     check_if_logged_in
     @task = Task.find_by(id: params[:id])
     if @task.project_id == session[:project_id]
-      erb :'/taks/edit.html'
+      erb :'/tasks/edit.html'
     else
       flash[:notice] = 'You can only edit your own tasks.'
       redirect to '/tasks'

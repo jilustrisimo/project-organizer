@@ -1,1 +1,22 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="center">Edit <%= @task.title%></h2>
+
+    <div>
+      <% if flash.has?(:notice) %>
+        <p class="flash"><b><%= flash[:notice] %></b></p>
+      <% end %>
+
+      <form action="/tasks/<%= @task.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="text" name="task[title]" value="<%= @task.title %>">
+        <br><br>
+        <textarea rows="10" cols="30" name="task[content]"><%= @task.content %></textarea>
+        <br><br>
+        <input type="submit" name="" value="Edit Task">
+
+      </form>
+    </div>
+  </div>
+</div>
