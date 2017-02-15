@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
 
-<<<<<<< HEAD
   get '/tasks/new' do
-=======
-  get "/tasks/new" do
->>>>>>> 6527d3cb03dde330b1e7e7526a9f5d9cb2c75091
     check_if_logged_in
     @project = Project.find_by(id: session[:project_id])
     erb :'/tasks/new.html'
