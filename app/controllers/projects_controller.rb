@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
 
   get '/projects/:id' do
     check_if_logged_in
+    check_if_project_exists
     @project = Project.find_by(id: params[:id])
     if @project.user_id == current_user.id
       # set for creating tasks
@@ -49,6 +50,7 @@ class ProjectsController < ApplicationController
   get '/projects/:id/edit' do
     # if logged_in?
     check_if_logged_in
+    check_if_project_exists
     @project = Project.find_by(id: params[:id])
     if @project.user_id == current_user.id
       erb :'/projects/edit.html'

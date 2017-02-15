@@ -31,5 +31,13 @@ class ApplicationController < Sinatra::Base
         redirect to '/login'
       end
     end
+
+    def check_if_project_exists
+      redirect to '/projects' if Project.all.find_by_id(params[:id]).nil?
+    end
+
+    def check_if_task_exists
+      redirect to '/projects' if Task.all.find_by_id(params[:id]).nil?
+    end
   end
 end

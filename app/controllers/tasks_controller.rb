@@ -30,6 +30,7 @@ class TasksController < ApplicationController
 
   get '/tasks/:id/edit' do
     check_if_logged_in
+    check_if_task_exists
     @task = Task.find_by(id: params[:id])
     if @task.project_id == session[:project_id]
       session[:task_id] = @task.id
