@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'/users/signup.html'
+    erb :'/users/signup.html' unless logged_in?
+    redirect to '/projects'
   end
 
   post '/signup' do
@@ -48,15 +49,10 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    # if logged_in?
     check_if_logged_in
     session.clear
     flash[:notice] = 'Successfully logged out.'
-    # rendering view since session is cleared
     erb :'/users/login.html'
-    # else
-    #   redirect to '/'
-    # end
   end
 
   get '/update' do

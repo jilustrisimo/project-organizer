@@ -23,11 +23,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # # GET: /tasks/5
-  # get "/tasks/:id" do
-  #   erb :"/tasks/show.html"
-  # end
-
   get '/tasks/:id/edit' do
     check_if_logged_in
     check_if_task_exists
