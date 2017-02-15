@@ -79,7 +79,10 @@ class ProjectsController < ApplicationController
     project = current_user.projects.find_by(id: params[:id])
 
     if project
+      binding.pry
+      project.tasks.delete_all
       project.delete
+      session.delete(:project_id)
       redirect '/projects'
     else
       flash[:notice] = 'You can only delete your own projects.'

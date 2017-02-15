@@ -53,13 +53,12 @@ class TasksController < ApplicationController
 
   delete '/tasks/:id/delete' do
     task = Task.find_by(id: session[:task_id])
-    binding.pry
     if task
       task.delete
-      redirect '/tasks'
+      session.delete(:task_id)
     else
       flash[:notice] = 'You can only delete your own tasks.'
-      redirect to '/tasks'
     end
+    redirect to "/projects/#{session[:project_id]}"
   end
 end
