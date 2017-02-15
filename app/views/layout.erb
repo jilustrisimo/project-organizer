@@ -23,11 +23,11 @@
     </footer>
     <footer class="user-links">
       <% if logged_in? %>
-        <small><b><a href="/projects/new">Create Project</a></b></small>
-        <small><b><a href="/projects">View Projects</a></b></small>
-        <small><b><a href="/update">Account Settings</a></b></small>
+        <a href="/projects/new"><button id="logout">Create Project</button></a>
+        <a href="/projects"><button id="logout">View Projects</button></a>
+        <a href="/update"><button id="logout">Account Settings</button></a>
+        <a href="/logout" onclick="confirm('Are you sure you want to log out?');"><button id="logout"><strong>Log Out</strong></button></a>
       <% end %>
-      <a href="/logout" onclick="confirm('Are you sure you want to log out?');"><button id="logout"><strong>Log Out</strong></button></a>
     </footer>
   </div>
 
