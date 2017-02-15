@@ -76,10 +76,10 @@ class ProjectsController < ApplicationController
   delete '/projects/:id/delete' do
     # if logged_in?
     check_if_logged_in
-    @project = current_user.projects.find_by(id: params[:id])
+    project = current_user.projects.find_by(id: params[:id])
 
-    if @project
-      @project.delete
+    if project
+      project.delete
       redirect '/projects'
     else
       flash[:notice] = 'You can only delete your own projects.'
