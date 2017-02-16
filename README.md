@@ -17,6 +17,9 @@ Project Oganizer is a Web App, built on Sinatra, to help you manage your project
 You can also:
   - Change your username or delete account
 
+## Video walkthrough
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/13SoAVfOfas/0.jpg)](http://www.youtube.com/watch?v=13SoAVfOfas "Video Title")
+
 ## Installation
 Clone the repository, then execute:
 ```
