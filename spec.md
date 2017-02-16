@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many relationship (User has_many Projects, Projects has_many Tasks)
 - [x] Include user accounts (enabled sessions and built /signup /login for users)
 - [x] Ensure that users can't modify content created by other users (checks if logged in and if object belongs to user, redirects with error message)
-- [x] Include user input validations (validates presence and other attrs set in models and  validations set in views)
+- [x] Include user input validations (validates presence and other attrs set in models and validations set in views)
 - [x] Display validation failures to user with error message (Rack::Flash)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
