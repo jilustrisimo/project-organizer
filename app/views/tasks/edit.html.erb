@@ -22,6 +22,8 @@
         <br><br>
         <input type="submit" name="" value="Edit Task">
       </form>
+      <br>
+      <a href="/projects/<%= @task.project_id %>"><button id="go-back">Back To Project</button></a>
 
       <form onsubmit="return confirm('Are you sure you want to delete <%= @task.title %>?');" action="/tasks/<%= @task.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">

@@ -133,6 +133,13 @@
     cursor: pointer;
   }
 
+  button#go-back {
+    padding: 3px;
+    cursor: pointer;
+    background-color: lightcoral;
+    color: white;
+  }
+
   #edit-object {
     padding: 7px;
     text-decoration: none;
