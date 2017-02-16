@@ -147,7 +147,7 @@
     margin: 10px;
   }
 
-  p.completed {
+  .completed {
     color: mediumspringgreen;
     font-weight: bold;
   }
