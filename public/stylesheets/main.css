@@ -146,6 +146,11 @@
     padding: 10px;
     margin: 10px;
   }
+
+  p.completed {
+    color: mediumspringgreen;
+    font-weight: bold;
+  }
 }
 
 @media screen and (max-width: 600px) {

@@ -15,6 +15,9 @@
             <div class="tasks">
               <p><b><%= task.title %></b></p>
               <p><%= task.content %></p>
+              <% if task.completed %>
+              <p class="completed">COMPLETED</p>
+              <% end %>
             </div>
           </a>
         <% end %>
