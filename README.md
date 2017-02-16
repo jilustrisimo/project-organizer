@@ -1,5 +1,4 @@
-
-# Project
+# Project Organizer
 
 Project Oganizer is a Web App, built on Sinatra, to help you manage your projects and their associated tasks.  A video walkthrough is listed below.  After signing up you can:
 
@@ -9,11 +8,11 @@ Project Oganizer is a Web App, built on Sinatra, to help you manage your project
   - View individual projects and all of the project's tasks
   - Mark Tasks complete
     * Once all of a project's tasks are completed, the project will be marked completed with the date it was completed
-  - Delete Tasks*
-  - Delete Projects with their associated tasks*
+  - Delete Tasks
+  - Delete Projects with their associated tasks
 
 
-  NOTE: **Whenever deleting something you will be prompted to confirm your action.*
+  NOTE: *Whenever deleting something you will be prompted to confirm your action.*
 
 You can also:
   - Change your username or delete account
@@ -27,7 +26,7 @@ $ bundle
 ## Usage
 Clean then migrate the database:
 ```
- $ rake db:reset db:migrate
+$ rake db:reset db:migrate
 ```
 To start the server, run:
 ```

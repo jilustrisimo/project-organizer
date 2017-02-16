@@ -9,7 +9,7 @@ Specs:
 - [x] Ensure that users can't modify content created by other users (checks if logged in and if object belongs to user, redirects with error message)
 - [x] Include user input validations (validates presence and other attrs set in models and  validations set in views)
 - [x] Display validation failures to user with error message (Rack::Flash)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
