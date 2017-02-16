@@ -24,7 +24,7 @@
               <p><%= task.content %></p>
               <% if task.completed %>
               <p class="completed">COMPLETED</p>
-              <p class="completed"><%= @project.updated_at.strftime('%A %e %B %Y')%></p>
+              <p class="completed"><%= task.updated_at.strftime('%A %e %B %Y')%></p>
               <% end %>
             </div>
           </a>
