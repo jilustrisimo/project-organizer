@@ -136,7 +136,7 @@
   button#go-back {
     padding: 3px;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color: rgb(255, 163, 71);
     color: white;
   }
 
@@ -157,6 +157,12 @@
   .completed {
     color: mediumspringgreen;
     font-weight: bold;
+  }
+
+  input#update {
+    padding: 3px;
+    background-color: rgb(19,122,255);
+    color: whitesmoke;
   }
 }
 
