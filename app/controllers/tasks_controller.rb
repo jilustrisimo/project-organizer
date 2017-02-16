@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     task = Task.find_by_id(params[:id])
     task.update(params[:task])
     if task.save
-      redirect to "/tasks/#{task.id}"
+      redirect to "/projects/#{task.project_id}"
     else
       flash[:notice] = task.errors.full_messages.uniq.join(', ')
       redirect to "/tasks/#{task.id}/edit"

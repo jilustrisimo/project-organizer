@@ -13,6 +13,12 @@
         <input type="text" name="task[title]" value="<%= @task.title %>">
         <br><br>
         <textarea rows="10" cols="30" name="task[content]"><%= @task.content %></textarea>
+        <br>
+        <select name="task[completed]" onfocus="setTrue()" required>
+          <option value="" disabled selected hidden> --select an option-- </option>
+          <option value="false" id="false">Not Completed</option>
+          <option value="true" id="true">Completed</option>
+        </select>
         <br><br>
         <input type="submit" name="" value="Edit Task">
       </form>
@@ -24,3 +30,11 @@
     </div>
   </div>
 </div>
+
+<!-- script for <select> -->
+
+<script>
+function setTrue() {
+    document.getElementById("<%= @task[:completed] %>").selected = "true";
+    }
+</script>
