@@ -20,7 +20,7 @@
         <input type="submit" name="" value="Edit Project" id="update">
       </form>
       <br>
-      <a href="/projects/<%= @project.id %>"><i class="fa fa-arrow-circle-left" style="font-size:48px;color:green"></i></a>
+      <a href="/projects/<%= @project.id %>"><i class="fa fa-arrow-circle-left" style="font-size:36px;color:green"></i></a>
 
       <form onsubmit="return confirm('Are you sure you want to delete <%= @project.title %> and all of it\'s tasks?');" action="/projects/<%= @project.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
