@@ -16,7 +16,7 @@
       <% end %>
 
       <p class="center"><%= @project.description %></p>
-      <br><br>
+      <br>
         <% @project.tasks.each do |task| %>
           <a href="/tasks/<%= task.id %>/edit" class="clickable-cells">
             <div class="tasks">
@@ -31,7 +31,7 @@
         <% end %>
         <br>
       <small><b>Due Date</b></small><br>
-        <% if Date.parse(@project.due_date.localtime.to_s) <=  Date.today %>
+        <% if Date.parse(@project.due_date.localtime.to_s) <=  Date.today && @project.completed != true %>
           <p class="date"><%= @project.due_date.localtime.strftime('%A %e %B %Y') %></p>
         <% else %>
           <p><%= @project.due_date.localtime.strftime('%A %e %B %Y') %></p>
