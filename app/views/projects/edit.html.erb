@@ -21,6 +21,12 @@
       </form>
       <br>
       <a href="/projects/<%= @project.id %>"><button id="go-back">Back To Project</button></a>
+
+      <form onsubmit="return confirm('Are you sure you want to delete <%= @project.title %> and all of it\'s tasks?');" action="/projects/<%= @project.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="delete" value="Delete Project" id="Delete Project" class="delete">
+      </form>
+
     </div>
   </div>
 </div>
