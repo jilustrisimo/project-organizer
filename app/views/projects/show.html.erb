@@ -8,11 +8,13 @@
       <% end %>
 
     <div>
-      <% if @project.tasks(completed: true).all? %>
+      <% if @project.completed_tasks? %>
+
       <h3 class="center completed">PROJECT COMPLETED</h3>
-      <p class="center completed"><%= @project.updated_at.strftime('%A %e %B %Y %T')%></p>
+      <p class="center completed"><%= @project.updated_at.strftime('%A %e %B %Y')%></p>
+
       <% end %>
-      
+
       <p class="center"><%= @project.description %></p>
       <br><br>
         <% @project.tasks.each do |task| %>
@@ -22,6 +24,7 @@
               <p><%= task.content %></p>
               <% if task.completed %>
               <p class="completed">COMPLETED</p>
+              <p class="completed"><%= @project.updated_at.strftime('%A %e %B %Y')%></p>
               <% end %>
             </div>
           </a>

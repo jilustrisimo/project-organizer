@@ -6,4 +6,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :due_date
 
+  def completed_tasks?
+    tasks.where(completed: true).count == tasks.count && tasks.count > 0
+  end
 end

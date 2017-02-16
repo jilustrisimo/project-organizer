@@ -13,18 +13,25 @@
         <div class="sorted-projects">
           <h3 class="center"><b><%= project.title %></b></h3>
           <br>
-          <% if project.tasks(completed: true).all? %>
+          <% if project.completed_tasks? %>
+
           <h3 class="center completed">PROJECT COMPLETED</h3>
-          <p class="center completed"><%= project.updated_at.strftime('%A %e %B %Y %T')%></p>
+          <p class="center completed"><%= project.updated_at.strftime('%A %e %B %Y')%></p>
+
           <% end %>
+
           <p class="center" ><%= project.description %></p>
-        <small><b>Due Date</b></small><br>
-        <% if Date.parse(project.due_date.to_s) <=  Date.today %>
-          <p class="date"><%= project.due_date.strftime('%A %e %B %Y') %></p>
-        <% else %>
-          <p><%= project.due_date.strftime('%A %e %B %Y') %></p>
-        <% end %>
-        <br><br>
+
+          <small><b>Due Date</b></small><br>
+          <% if Date.parse(project.due_date.to_s) <=  Date.today %>
+
+            <p class="date"><%= project.due_date.strftime('%A %e %B %Y') %></p>
+
+          <% else %>
+            <p><%= project.due_date.strftime('%A %e %B %Y') %></p>
+
+          <% end %>
+          <br><br>
         </div>
       </a>
       <% end %>
