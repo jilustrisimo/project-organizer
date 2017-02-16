@@ -17,10 +17,10 @@
         <small><b>Due Date</b></small><br>
         <%= @project.due_date.localtime.strftime('%A %e %B %Y') %>
         <br><br>
-        <input type="submit" name="" value="Edit Project">
+        <input type="submit" name="" value="Edit Project" id="update">
       </form>
       <br>
-      <a href="/projects/<%= @project.id %>"><button id="go-back">Back To Project</button></a>
+      <a href="/projects/<%= @project.id %>"><i class="fa fa-arrow-circle-left" style="font-size:48px;color:green"></i></a>
 
       <form onsubmit="return confirm('Are you sure you want to delete <%= @project.title %> and all of it\'s tasks?');" action="/projects/<%= @project.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
