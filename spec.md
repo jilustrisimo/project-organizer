@@ -2,13 +2,13 @@
 
 Specs:
 - [x] Use Sinatra to build the app
-- [x] Use ActiveRecord for storing information in a database
-- [x] Include more than one model class (list of model class names e.g. User, Post, Category)
-- [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
-- [x] Include user accounts
-- [x] Ensure that users can't modify content created by other users
-- [x] Include user input validations
-- [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Use ActiveRecord for storing information in a database (Created tables :users, :projects, :tasks)
+- [x] Include more than one model class (User Project Task)
+- [x] Include at least one has_many relationship (User has_many Projects, Projects has_many Tasks)
+- [x] Include user accounts (enabled sessions and built /signup /login for users)
+- [x] Ensure that users can't modify content created by other users (checks if logged in and if object belongs to user, redirects with error message)
+- [x] Include user input validations (validates presence and other attrs set in models and  validations set in views)
+- [x] Display validation failures to user with error message (Rack::Flash)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
