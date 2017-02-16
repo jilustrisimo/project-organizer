@@ -41,7 +41,6 @@ class ProjectsController < ApplicationController
     check_if_logged_in
     check_if_project_exists
     @project = Project.find_by(id: params[:id])
-    @project.update_if_completed
     if @project.user_id == current_user.id
       erb :'/projects/edit.html'
     else

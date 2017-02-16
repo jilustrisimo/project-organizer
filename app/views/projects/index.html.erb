@@ -9,6 +9,7 @@
 
     <div>
       <% @projects.each do |project| %>
+      <% project.update_if_completed %>
       <a href="/projects/<%= project.id %>" class="clickable-cells">
         <div class="sorted-projects">
           <h3 class="center"><b><%= project.title %></b></h3>
