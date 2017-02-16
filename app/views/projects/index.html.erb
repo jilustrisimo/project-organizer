@@ -12,7 +12,11 @@
       <a href="/projects/<%= project.id %>" class="clickable-cells">
         <div class="sorted-projects">
           <h3 class="center"><b><%= project.title %></b></h3>
-          <br><br>
+          <br>
+          <% if project.tasks(completed: true).all? %>
+          <h3 class="center completed">PROJECT COMPLETED</h3>
+          <p class="center completed"><%= project.updated_at.strftime('%A %e %B %Y %T')%></p>
+          <% end %>
           <p class="center" ><%= project.description %></p>
         <small><b>Due Date</b></small><br>
         <% if Date.parse(project.due_date.to_s) <=  Date.today %>
