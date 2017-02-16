@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
     tasks.where(completed: true).count == tasks.count && tasks.count > 0
   end
 
-  def check_if_project_completed
-    update(completed: true) if completed_tasks?
+  def update_if_completed
+    update(completed: true) if completed_tasks? && :completed != true
   end
 end
