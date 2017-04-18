@@ -1,19 +1,20 @@
 class TasksController < ApplicationController
 
-  get '/tasks/new' do
+  get '/projects/:project_id/tasks/new' do
     check_if_logged_in
-    @project = Project.find_by(id: session[:project_id])
+    @project = Project.find_by(id: params[:project_id])
+    @task = @project.task.build
     erb :'/tasks/new.html'
   end
 
-  post '/tasks' do
-    task = Task.create(params[:task])
-    if task.save
-      task.update(project_id: session[:project_id])
-      redirect "/projects/#{task.project_id}"
+  post '/projects/:project_id/tasks' do
+    @project = Project.find_by(id: params[:project_id])
+    @task = @project.task.build(params[:task])
+    if @task.save
+      redirect "/projects/#{@task.project_id}"
     else
-      flash[:notice] = task.errors.full_messages.uniq.join(', ')
-      redirect to '/tasks/new'
+      flash[:notice] = @task.errors.full_messages.uniq.join(', ')
+      erb :'/tasks/new.html'
     end
   end
 

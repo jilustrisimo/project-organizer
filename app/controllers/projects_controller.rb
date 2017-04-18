@@ -12,9 +12,8 @@ class ProjectsController < ApplicationController
   end
 
   post '/projects' do
-    project = Project.create(params[:project])
+    project = current_user.projects.build(params[:project])
     if project.save
-      project.update(user_id: current_user.id)
       redirect "/projects/#{project.id}"
     else
       flash[:notice] = project.errors.full_messages.uniq.join(', ')
@@ -26,10 +25,9 @@ class ProjectsController < ApplicationController
     check_if_logged_in
     check_if_project_exists
     @project = Project.find_by(id: params[:id])
+    @task = @project.tasks.build
     @project.update_if_completed
-    if @project.user_id == current_user.id
-      # set for creating tasks
-      session[:project_id] = @project.id
+    if @project.user == current_user
       erb :'/projects/show.html'
     else
       flash[:notice] = 'You can only view you own projects.'

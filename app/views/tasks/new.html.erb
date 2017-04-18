@@ -8,10 +8,10 @@
         <p class="flash"><b><%= flash[:notice] %></b></p>
       <% end %>
 
-      <form action="/tasks" method="post">
-        <input type="text" name="task[title]" placeholder="Task Title">
+      <form action="/project/<%= @project.id %>/tasks" method="post">
+        <input type="text" name="task[title]" placeholder="Task Title" value="<%= @task.title %>">
         <br><br>
-        <textarea rows="10" cols="30" name="task[content]" placeholder="task objective"></textarea>
+        <textarea rows="10" cols="30" name="task[content]" placeholder="task objective"><%= @task.content %></textarea>
         <br><br>
         <input type="submit" name="" value="Create Task" id="update">
       </form>
